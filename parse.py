@@ -1,3 +1,5 @@
+import gemeni
+import json
 syllabus = open("syllabus.txt", "r").read().replace("\n"," newline ").split()
 def parseDate(date):
     dates = date.split("/")
@@ -16,9 +18,11 @@ for i,word in enumerate(syllabus):
         current_label += "\n"
     else:
         current_label += word + " "
+resp = gemeni.GetResponse(open("syllabus.txt", "r").read())
+tasks = json.loads(resp)
 for task in tasks:
     date = task["date"]
-    label = task["label"]
-    print(f"\n\nNext task:\n\n {date} : {label} .")
+    label = task["content"]
+    print(f"\n\nNext task:\n\n {date} : {label} .\n\n")
     input("Does that sound good?")
     
