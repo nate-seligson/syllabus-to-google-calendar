@@ -1,5 +1,6 @@
 import datetime
-year = datetime.datetime.today().strftime("%Y")
+today = datetime.datetime.today()
+year = today.strftime("%Y")
 def parseDate(date):
     return datetime.datetime(int(year), *date).isoformat('T') + "Z"
 def MakeTask(proposed_task):
