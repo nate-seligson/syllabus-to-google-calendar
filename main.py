@@ -10,7 +10,7 @@ tasks = []
 def addTasks():
     googleapi.CreateTasks(tasks)
     dpg.delete_item("gt")
-    dpg.add_text("Added.")
+    dpg.add_text(default_value="Added.", parent = window)
 
 def generate():
     global tasks

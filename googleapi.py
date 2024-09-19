@@ -34,7 +34,9 @@ def CreateTasks(tasklist):
     service = build("tasks", "v1", credentials=creds)
 
     # Call the Tasks API
+    results = service.tasklists().list(maxResults=1).execute()
+    id = results.get("items", [])[0]["id"]
     for task in tasklist:
-      service.tasks().insert(body = task, tasklist = "MDg1ODc3MDQ4ODM2OTYwMjcwMjg6MDow").execute()
+      service.tasks().insert(body = task, tasklist = id).execute()
   except HttpError as err:
     print(err)
