@@ -1,0 +1,30 @@
+const { GoogleGenerativeAI } = require("@google/generative-ai");
+
+const genAI = new GoogleGenerativeAI("");
+const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+
+const prompt = `sort the following syllabus into JSON of Date and Content, with the date being the due date of a given assignment and the content being the given content of the assignment. Ignore text that is not directly related to an assigment. If the assignment name contains quotation marks, precede them with a / 
+Example Input: 
+"
+Week 1
+W 09/04 Introducing the Course
+Discuss syllabus
+DG: “What to Expect in Your First-Year Writing Classes” (Ch.2)
+Week 2
+M 09/09 The Joy of Reading and Writing
+D2l: “The Joy of Reading and Writing: Superman and Me” –Alexie
+“Learning to Read” – Malcolm X"
+Example output:
+{"date": "09/04", "content": "DG: \"What to Expect in Your First-Year Writing Classes\" (Ch.2)"}
+{"date": "09/09", "content": “D2l: \"The Joy of Reading and Writing: Superman and Me\" –Alexie"}
+{"date": "09/09", "content": “D2l: \"Learning to Read – Malcolm X\""}
+
+Input:
+`;
+
+
+async function GetResponse(syllabus){
+    const result = await model.generateContent(prompt + syllabus);
+    return result.response.text()
+}
+module.exports = { GetResponse };

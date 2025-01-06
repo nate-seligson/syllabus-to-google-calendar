@@ -1,0 +1,8 @@
+google-auth
+google-auth-oauthlib
+google-api-python-client
+google.generativeai
+google-auth-httplib2
+Flask==3.0.3
+gunicorn==22.0.0
+Werkzeug==3.0.3

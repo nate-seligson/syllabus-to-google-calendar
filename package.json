@@ -1,0 +1,21 @@
+{
+  "name": "syllabus",
+  "version": "1.0.0",
+  "description": "This project makes you input your syllabus, parses out your assignments and due dates using Gemeni API, then pastes them into your Google Calendar as tasks using the Google Tasks API. This project was made in one day and furthed my understanding of API implementation and creating easy-to-use deployable apps.",
+  "main": "main.js",
+  "homepage": "https://nate-seligson.github.io/syllabus-to-google-calendar",
+  "scripts": {
+    "build": "npm run main.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@google-cloud/local-auth": "^2.1.0",
+    "@google/generative-ai": "^0.21.0",
+    "googleapis": "^105.0.0"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
+  }
+}
