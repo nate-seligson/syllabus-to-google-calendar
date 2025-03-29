@@ -1,0 +1,40 @@
+body{
+    background-color: #00171F;
+    font-family: monospace;
+    color: #6A8EAE;
+}
+h4{
+    padding-bottom:50px
+}
+li{
+    font-size:small;
+}
+form{
+    border:#D1FAFF solid 8px;
+    background-color: #9BD1E5;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    color:#00171F;
+    border-radius:25px;
+    margin:10px;
+    padding:10px;
+    font-size:x-large;
+}
+input, textarea{
+    margin:10px;
+    background-color: #D1FAFF;
+    border-radius:25px;
+    padding:25px;
+}
+button{
+    font-family:monospace;
+    padding:20px;
+    border-radius:75px;
+    transition:0.5s ease;
+}
+button:hover{
+    background-color: #00171F;
+    color: #6A8EAE;
+}
