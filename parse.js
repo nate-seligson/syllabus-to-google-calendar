@@ -17,7 +17,6 @@ function MakeTask(proposed_task) {
 
     if (proposed_task.date) {
         try {
-            console.log({ title: unslashed_content, due: parseDate(proposed_task.date) })
             return { title: unslashed_content, due: parseDate(proposed_task.date) };
         } catch (error) {
             console.error("Invalid date format:", proposed_task.date);

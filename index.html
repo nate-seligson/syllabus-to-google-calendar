@@ -12,25 +12,47 @@
 
       // Send POST request
       axios.post('http://localhost:8080', {
-        key: key,
-        input_text: inputText
-      })
-      .then(function (response) {
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
+  key: key,
+  input_text: inputText
+})
+.then(function (response) {
+  console.log(response.data);
+  // Convert each parsed task from "ISO_DATE: Title" to "MM/DD : Title"
+  const formattedTasks = response.data.parsed_tasks.map(task => {
+    // Assuming task is in the format "2025-11-02T05:00:00.000Z: Title"
+    const parts = task.split(': ');
+    if (parts.length >= 2) {
+      const isoDate = parts[0];
+      const title = parts.slice(1).join(': ');
+      const date = new Date(isoDate);
+      const month = (date.getMonth() + 1).toString().padStart(2, '0');
+      const day = date.getDate().toString().padStart(2, '0');
+      return `${month}/${day} : ${title}`;
+    }
+    return task; // If splitting fails, return the original string
+  }).join('<br>');
+  
+  setTimeout(() => {
+    document.getElementById('output').innerHTML = `<pre style = 'font:inherit'>Successfully Added! View tasks here: <a target='_blank' href='https://calendar.google.com/calendar/u/0/r/tasks?pli=1'>Google Tasks</a><br><br>Tasks Added:<br>${formattedTasks}</pre>`;
+  }, 2000);
+})
+
+.catch(function (error) {
+  console.error(error);
+});
     }
   </script>
+  <link rel = "stylesheet" href = "style.css">
 </head>
 <body>
   <h1>hello please put this information and hit submit when done</h1>
+  <h2 id = "output"></h2>
   <form onsubmit="handleSubmit(event)">
     <label for="key">Enter your key:</label><br>
     <input type="text" id="key" name="key" required><br><br>
 
     <label for="input_text">Paste your syllabus here:</label><br>
-    <textarea id="input_text" name="input_text" rows="10" cols="50" required></textarea><br><br>
+    <textarea id="input_text" name="input_text" rows="45" cols="100" required></textarea><br><br>
 
     <button type="submit">Submit</button>
   </form>
