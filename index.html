@@ -1,10 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Simple HTTP Program</title>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+    function handleSubmit(event) {
+      event.preventDefault(); // Prevent the default form submission
+
+      // Get form values
+      const key = document.getElementById('key').value;
+      const inputText = document.getElementById('input_text').value;
+
+      // Send POST request
+      axios.post('http://localhost:8080', {
+        key: key,
+        input_text: inputText
+      })
+      .then(function (response) {
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+    }
+  </script>
 </head>
 <body>
-  <h1>Hello, World!</h1>
-  <script type = "module" src="main.js"></script>
+  <h1>hello please put this information and hit submit when done</h1>
+  <form onsubmit="handleSubmit(event)">
+    <label for="key">Enter your key:</label><br>
+    <input type="text" id="key" name="key" required><br><br>
+
+    <label for="input_text">Paste your syllabus here:</label><br>
+    <textarea id="input_text" name="input_text" rows="10" cols="50" required></textarea><br><br>
+
+    <button type="submit">Submit</button>
+  </form>
 </body>
 </html>

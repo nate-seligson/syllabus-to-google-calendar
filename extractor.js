@@ -1,7 +1,7 @@
 const { GetResponse } = require("./gemeni.js");
 const { MakeTask } = require("./parse.js")
-async function get_tasks(syllabus) {
-    const textResponse = await GetResponse(syllabus);
+async function get_tasks(key, syllabus) {
+    const textResponse = await GetResponse(key, syllabus);
     try {
         const decoded_response = textResponse ? JSON.parse(textResponse.slice(7,-4)) : [];
         const tasks = decoded_response.map(MakeTask)

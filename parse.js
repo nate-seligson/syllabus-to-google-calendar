@@ -13,7 +13,7 @@ function parseDate(date) {
 
 
 function MakeTask(proposed_task) {
-    const unslashed_content = proposed_task.content.replace(/\\/g, "");
+    const unslashed_content = proposed_task.content.replace("/", "");
 
     if (proposed_task.date) {
         try {

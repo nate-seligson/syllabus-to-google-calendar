@@ -1,8 +1,5 @@
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 
-const genAI = new GoogleGenerativeAI("");
-const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-
 const prompt = `sort the following syllabus into JSON of Date and Content, with the date being the due date of a given assignment and the content being the given content of the assignment. Ignore text that is not directly related to an assigment. If the assignment name contains quotation marks, precede them with a / 
 Example Input: 
 "
@@ -23,7 +20,10 @@ Input:
 `;
 
 
-async function GetResponse(syllabus){
+async function GetResponse(key, syllabus){
+
+    const genAI = new GoogleGenerativeAI("AIzaSyDnVUhvLm7K2L_V45xsXEqZfezn60gXNQg");
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
     const result = await model.generateContent(prompt + syllabus);
     return result.response.text()
 }
