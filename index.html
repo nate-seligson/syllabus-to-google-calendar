@@ -4,6 +4,7 @@
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script>
     function handleSubmit(event) {
+      document.getElementById("submit").innerHTML = "..."
       event.preventDefault(); // Prevent the default form submission
 
       // Get form values
@@ -33,6 +34,7 @@
   }).join('<br>');
   
   setTimeout(() => {
+    document.getElementById("submit").innerHTML = "Submit"
     document.getElementById('output').innerHTML = `<pre style = 'font:inherit'>Successfully Added! View tasks here: <a target='_blank' href='https://calendar.google.com/calendar/u/0/r/tasks?pli=1'>Google Tasks</a><br><br>Tasks Added:<br>${formattedTasks}</pre>`;
   }, 2000);
 })
@@ -104,8 +106,8 @@ button:hover{
     <label for="input_text">Paste your Syllabus here:</label><br>
     <textarea style="width:75%" id="input_text" name="input_text" rows="45" cols="100" required></textarea><br><br>
 
-    <button type="submit">Submit</button>
-    <h2 id = "output"></h2>
+    <button id="submit" type="submit">Submit</button>
+    <p id = "output"></p>
   </form>
 </body>
 </html>

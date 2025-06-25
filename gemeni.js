@@ -4,11 +4,11 @@ const prompt = `sort the following syllabus into JSON of Date and Content, with 
 Example Input: 
 "
 Week 1
-W 09/04 Introducing the Course
+September Fourth, Introducing the Course
 Discuss syllabus
 DG: “What to Expect in Your First-Year Writing Classes” (Ch.2)
 Week 2
-M 09/09 The Joy of Reading and Writing
+M  September 9 The Joy of Reading and Writing
 D2l: “The Joy of Reading and Writing: Superman and Me” –Alexie
 “Learning to Read” – Malcolm X"
 Example output:
