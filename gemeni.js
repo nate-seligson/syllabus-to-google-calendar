@@ -22,7 +22,7 @@ Input:
 
 async function GetResponse(key, syllabus){
 
-    const genAI = new GoogleGenerativeAI("AIzaSyDnVUhvLm7K2L_V45xsXEqZfezn60gXNQg");
+    const genAI = new GoogleGenerativeAI(key);
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
     const result = await model.generateContent(prompt + syllabus);
     return result.response.text()
